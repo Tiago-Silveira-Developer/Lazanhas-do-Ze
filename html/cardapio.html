@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../src/teste2.png" type="image/x-icon">
+  <!-- bootstrap icons integration -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!--  -->
+  <link rel="stylesheet" href="../css/headerConfig.css">
+  <link rel="stylesheet" href="../mainConfig.css">
+  <link rel="stylesheet" href="../css/reset.css">
+
+  <!-- css da pagina especifica -->
+  <link rel="stylesheet" href="../css/cardapio.css">
+
+  <!-- setup do carrinho -->
+  <link rel="stylesheet" href="../css/carrinho.css">
+  <title>Lasanhas do Zé</title>
+</head>
+
+<body>
+  <header>
+    <div id="logo"><a href="../index.html"><img src="../src/logoTeste.png" alt="Logo Lazanhas do Zé"></a></div>
+    <div id="topMenu">
+      <div id="cardapio"><a href="cardapio.html" class="linkBtn">Cardápio</a></div>
+      <div id="contato"><a href="contato.html" class="linkBtn">Contato</a></div>
+      <div id="carrinho"><a href="carrinho.html" class="linkBtn">Carrinho</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Cardápio</h2>
+      <article id="cardapioTable">
+        <div class="sabor">
+          <h3>Bolonhesa</h3>
+          <div class="descricao">
+            <p>Feita com a melhor carne moída da cidade, molho vermelho, queijo, e requeijão. Vai
+              resistir?</p>
+            <p>Acompanha uma porção de arroz e uma porção de fritas.</p>
+            <p>Serve até duas pessoas.</p>
+          </div>
+          <div class="valor bolonhesa" onclick="addItemCarBolonha()"><span class="cartIcon"><i
+                class="bi bi-cart-check"></i></span>49.90</div>
+
+        </div>
+        <div class="sabor">
+          <h3>4 Queijos</h3>
+          <div class="descricao">
+            <p>
+              Feita com os melhores queijos do mercado, molho vermelho, queijo, e requeijão. Impossível
+              não amar!
+            </p>
+            <p>Acompanha uma porção de arroz e uma porção de fritas.</p>
+            <p>Serve até duas pessoas.</p>
+          </div>
+          <div class="valor queijos" onclick="addItemCarQueijo()"><span class="cartIcon"><i
+                class="bi bi-cart-check"></i></span>49.90</div>
+
+        </div>
+        <div class="sabor">
+          <h3>Carne de Panela com Bacon</h3>
+          <div class="descricao">
+            <p>Feita com carne de panela, bacon, molho vermelho, queijo, e requeijão. Experimente já!
+            </p>
+            <p>Acompanha uma porção de arroz e uma porção de fritas.</p>
+            <p>Serve até duas pessoas.</p>
+          </div>
+          <div class="valor frango" onclick="addItemCarCarne()"><span class="cartIcon"><i
+                class="bi bi-cart-check"></i></span>49.90</div>
+
+        </div>
+        <div class="sabor">
+          <h3>Camarão</h3>
+          <div class="descricao">
+            <p>Feita com os melhores camarõs encontrados no mercado, molho vermelho, queijo, e requeijão.
+              Perfeita pra quem ama frutos do mar!</p>
+            <p>Acompanha uma porção de arroz e uma porção de fritas.</p>
+            <p>Serve até duas pessoas.</p>
+          </div>
+          <div class="valor camarao" onclick="addItemCarCamarao()"><span class="cartIcon"><i
+                class="bi bi-cart-check"></i></span>49.90</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <aside id="cartTool" class="carToolHide">
+    <div id="iconOpenCart" onclick="abrirCarrinho()"><i class="bi bi-cart2"></i></div>
+    <div id="cart">
+      <h3>Meu Carrinho</h3>
+
+      <div id="cartItems"></div>
+
+      <div id="subTotal">
+        <div id="total">R$ 0,00</div>
+        <div id="confirm">Confirmar Pedido</div>
+      </div>
+    </div>
+
+  </aside>
+  <!-- opencart script -->
+  <script src="../js/cartOpen.js"></script>
+  <!-- addItemCar script -->
+  <script src="../js/addItemCar.js"></script>
+
+  <script>
+    const car = JSON.parse(localStorage.getItem("carrinho")) || [];
+    const badge = document.getElementById("badgeQtd");
+    if (badge) {
+      const totalItens = car.reduce((acc, item) => acc + item.quantidade, 0);
+      badge.textContent = `(${totalItens})`;
+    }
+  </script>
+
+</body>
+
+</html>

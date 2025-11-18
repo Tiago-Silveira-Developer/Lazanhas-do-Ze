@@ -1,0 +1,220 @@
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+#cardapioTable {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 25px auto;
+    padding: 0 15px;
+    max-width: 1200px;
+}
+
+.sabor {
+    background-image: url(../src/lasanhaCard.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    background-color: #F9D5A5;
+    padding: 15px;
+    margin-bottom: 0;
+    position: relative;
+    min-height: 380px;
+    animation: fadein 0.8s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.sabor:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.sabor h3 {
+    color: #FDEED9;
+    background-color: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.descricao {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 50px;
+    flex-grow: 1;
+}
+
+.descricao p {
+    margin: 8px 0;
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: #333;
+}
+
+.valor {
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+    background-color: rgb(135, 230, 135);
+    padding: 10px 15px;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    font-weight: bolder;
+    font-size: 1.3em;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cartIcon {
+    font-size: 1.1em;
+}
+
+.valor:hover {
+    cursor: pointer;
+    background-color: rgb(13, 139, 13);
+    color: #FDEED9;
+    transform: translateX(-5px);
+}
+
+@keyframes fadein {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* === RESPONSIVIDADE === */
+
+/* Tablets grandes */
+@media (max-width: 1024px) {
+    #cardapioTable {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    section h2 {
+        font-size: 2.2em;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    #cardapioTable {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    .sabor {
+        min-height: 350px;
+        padding: 12px;
+    }
+
+    .sabor h3 {
+        font-size: 1.3em;
+        padding: 6px;
+    }
+
+    .descricao {
+        padding: 10px;
+        margin-bottom: 45px;
+    }
+
+    .descricao p {
+        font-size: 0.9em;
+    }
+
+    .valor {
+        font-size: 1.2em;
+        padding: 8px 12px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    #cardapioTable {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .sabor {
+        min-height: 320px;
+        padding: 10px;
+    }
+
+    .sabor h3 {
+        font-size: 1.2em;
+        padding: 6px;
+        margin-bottom: 10px;
+    }
+
+    .descricao {
+        padding: 10px;
+        margin-bottom: 50px;
+    }
+
+    .descricao p {
+        font-size: 0.85em;
+        margin: 6px 0;
+    }
+
+    .valor {
+        font-size: 1.1em;
+        padding: 8px 12px;
+        bottom: 10px;
+    }
+
+    .cartIcon {
+        font-size: 1em;
+    }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 360px) {
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    .sabor {
+        min-height: 300px;
+    }
+
+    .sabor h3 {
+        font-size: 1.1em;
+    }
+
+    .descricao p {
+        font-size: 0.8em;
+    }
+
+    .valor {
+        font-size: 1em;
+        padding: 6px 10px;
+    }
+}

@@ -1,0 +1,37 @@
+main section p {
+    color: #FDEED9;
+}
+
+.btnWapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    height: 70px;
+    width: 70px;
+    background-color: transparent;
+    font-size: 60px;
+    color: green;
+    transition: .3s;
+}
+
+button:hover{
+    color: rgb(72, 160, 72);
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  button {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+  }
+
+  main section p {
+    padding: 0 10px;
+    text-align: center;
+  }
+}

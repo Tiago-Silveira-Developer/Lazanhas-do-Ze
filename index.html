@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="src/teste2.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/headerConfig.css">
+  <link rel="stylesheet" href="mainConfig.css">
+  <title>Lasanhas do Zé</title>
+</head>
+
+<body>
+  <header>
+    <div id="logo"><a href="#"><img src="src/logoTeste.png" alt="Logo Lasanhas do Zé"></a></div>
+    <div id="topMenu">
+      <div id="cardapio"><a href="html/cardapio.html" class="linkBtn">Cardápio</a></div>
+      <div id="contato"><a href="html/contato.html" class="linkBtn">Contato</a></div>
+      <div id="carrinho"><a href="html/carrinho.html" class="linkBtn">Carrinho <span id="badgeQtd">(0)</span></a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="aboutUs">
+      <h2>Sobre nós</h2>
+      <p>Nós da <span>Lasanhas do Zé</span> levamos até você a perfeição das nossas lasanhas caseiras.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta alias amet consectetur totam dolore dolores
+        aliquam minus hic vel saepe ipsum corrupti ipsam quod, adipisci similique culpa beatae laborum repellendus?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla reiciendis consequuntur enim vel necessitatibus
+        facere eos voluptates consectetur? Unde illo id adipisci perspiciatis nisi alias est quae, delectus similique
+        doloribus?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate est iste tempora accusamus neque delectus
+        vitae, ex, odio alias, fuga totam explicabo laboriosam. Aliquam, libero explicabo dolores molestiae totam rem.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ut, neque dolores magni quaerat dolor in nisi,
+        provident at corrupti modi, voluptatem fugiat ex recusandae repellat. Repellendus, aliquam harum. Adipisci.</p>
+    </section>
+
+    <section class="avaliacoes">
+      <h2>O que dizem nossos clientes</h2>
+      <div class="comentarios">
+        <blockquote>"A melhor lasanha que já comi! 🔥"<br><cite>— Amanda, Gravataí</cite></blockquote>
+        <blockquote>"Entrega rápida e comida deliciosa. Recomendo demais."<br><cite>— Felipe, Canoas</cite></blockquote>
+        <blockquote>"A lasanha 4 queijos é um espetáculo. Virei cliente fiel!"<br><cite>— Juliana, Cachoeirinha</cite></blockquote>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const car = JSON.parse(localStorage.getItem("carrinho")) || [];
+    const badge = document.getElementById("badgeQtd");
+    if (badge) {
+      const totalItens = car.reduce((acc, item) => acc + item.quantidade, 0);
+      badge.textContent = `(${totalItens})`;
+    }
+  </script>
+
+</body>
+
+</html>

@@ -16,8 +16,13 @@ function adicionarItem(nome, preco) {
     }
 
     salvarCarrinho();
-    criarAlertaBootstrap(`${nome} adicionada ao carrinho!`);
+    mostrarAlerta(`${nome} adicionada ao carrinho!`, "success");
     atualizarCarrinhoLateral();
+    
+    // Atualizar badge do header (se a função existir)
+    if (typeof atualizarBadgeCarrinho === 'function') {
+        atualizarBadgeCarrinho();
+    }
 }
 
 /* ===== FUNÇÕES DOS SABORES ===== */
@@ -32,18 +37,19 @@ function addItemCarCamarao() { adicionarItem("Lasanha de Camarão", 49.90); }
 function abrirCarrinho() {
     const aside = document.getElementById("cartTool");
     aside.classList.toggle("carToolShow");
+    aside.classList.toggle("carToolHide");
     atualizarCarrinhoLateral();
 }
 
 function atualizarCarrinhoLateral() {
-    const container = document.getElementById("cart");
-    const itemsHTML = carrinho.map(item => `
+    const list = document.getElementById("cartItems");
+    if (!list) return; // evita erro no index.html
+
+    list.innerHTML = carrinho.map(item => `
         <div class="itemCart">
             ${item.nome} x${item.quantidade} – R$ ${(item.preco * item.quantidade).toFixed(2)}
         </div>
     `).join("");
-
-    container.querySelector("#cartItems").innerHTML = itemsHTML;
 
     const total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
     document.getElementById("total").textContent = `R$ ${total.toFixed(2)}`;
@@ -52,34 +58,39 @@ function atualizarCarrinhoLateral() {
 /* ===== ENVIO PARA WHATSAPP ===== */
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("confirm").addEventListener("click", () => {
-        if (carrinho.length === 0) {
-            criarAlertaBootstrap("Seu carrinho está vazio!", "danger");
-            return;
-        }
+    const confirmBtn = document.getElementById("confirm");
 
-        const mensagem = carrinho
-            .map(item => `• ${item.nome} x${item.quantidade} – R$ ${(item.preco * item.quantidade).toFixed(2)}`)
-            .join("%0A");
+    if (confirmBtn) {
+        confirmBtn.addEventListener("click", () => {
 
-        const total = carrinho.reduce((s, i) => s + i.preco * i.quantidade, 0);
+            if (carrinho.length === 0) {
+                mostrarAlerta("Seu carrinho está vazio!", "danger");
+                return;
+            }
 
-        const link = `https://wa.me/5551998123763?text=Olá,%20quero%20fazer%20um%20pedido:%0A${mensagem}%0A%0ATotal:%20R$%20${total.toFixed(2)}`;
-        window.open(link, "_blank");
-    });
+            const msg = carrinho
+                .map(item => `• ${item.nome} x${item.quantidade} – R$ ${(item.preco * item.quantidade).toFixed(2)}`)
+                .join("%0A");
+
+            const total = carrinho.reduce((s, i) => s + i.preco * i.quantidade, 0);
+
+            const link = `https://wa.me/5551998123763?text=Olá,%20quero%20fazer%20um%20pedido:%0A${msg}%0A%0ATotal:%20R$%20${total.toFixed(2)}`;
+            window.open(link, "_blank");
+        });
+    }
 
     atualizarCarrinhoLateral();
 });
 
 /* ===== ALERTA BOOTSTRAP ===== */
 
-function criarAlertaBootstrap(texto, tipo = "success") {
-    const alert = document.createElement("div");
-    alert.className = `alert alert-${tipo} position-fixed top-0 start-50 translate-middle-x mt-3 shadow`;
-    alert.style.zIndex = 20000;
-    alert.textContent = texto;
+function mostrarAlerta(msg, tipo = "success") {
+    const alerta = document.createElement("div");
+    alerta.className = `alert alert-${tipo} position-fixed top-0 start-50 translate-middle-x mt-3 shadow`;
+    alerta.style.zIndex = "5000";
+    alerta.textContent = msg;
 
-    document.body.appendChild(alert);
+    document.body.appendChild(alerta);
 
-    setTimeout(() => alert.remove(), 3000);
+    setTimeout(() => alerta.remove(), 2500);
 }

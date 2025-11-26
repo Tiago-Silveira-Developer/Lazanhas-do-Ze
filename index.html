@@ -4,57 +4,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="shortcut icon" href="src/teste2.png" type="image/x-icon">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/headerConfig.css">
-  <link rel="stylesheet" href="mainConfig.css">
+  <link rel="stylesheet" href="css/mainConfig.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <title>Lasanhas do Zé</title>
+
+  <style>
+    /* Estilos específicos para o carousel */
+    .carousel-section {
+      width: 90%;
+      max-width: 900px;
+      margin: 30px auto;
+    }
+
+    #carouselLasanhas {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-item img {
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.75);
+      border-radius: 8px;
+      padding: 15px;
+      bottom: 30px;
+    }
+
+    .carousel-caption h5 {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #F19A25;
+      margin-bottom: 8px;
+    }
+
+    .carousel-caption p {
+      font-size: 1.1em;
+      color: #FDEED9;
+      margin: 0;
+    }
+
+    /* Responsividade do carousel */
+    @media (max-width: 768px) {
+      .carousel-item img {
+        height: 300px;
+      }
+
+      .carousel-caption h5 {
+        font-size: 1.4em;
+      }
+
+      .carousel-caption p {
+        font-size: 0.95em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-section {
+        width: 95%;
+      }
+
+      .carousel-item img {
+        height: 250px;
+      }
+
+      .carousel-caption {
+        padding: 10px;
+        bottom: 20px;
+      }
+
+      .carousel-caption h5 {
+        font-size: 1.2em;
+      }
+
+      .carousel-caption p {
+        font-size: 0.85em;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
   <header>
-    <div id="logo"><a href="#"><img src="src/logoTeste.png" alt="Logo Lasanhas do Zé"></a></div>
+    <div id="logo"><a href="#"><img src="src/logoTeste.png"></a></div>
+
     <div id="topMenu">
-      <div id="cardapio"><a href="html/cardapio.html" class="linkBtn">Cardápio</a></div>
-      <div id="contato"><a href="html/contato.html" class="linkBtn">Contato</a></div>
-      <div id="carrinho"><a href="html/carrinho.html" class="linkBtn">Carrinho <span id="badgeQtd">(0)</span></a></div>
+      <a href="html/cardapio.html" class="linkBtn">Cardápio</a>
+      <a href="html/contato.html" class="linkBtn">Contato</a>
+      <a href="html/carrinho.html" class="linkBtn">Carrinho <span id="badgeQtd">(0)</span></a>
     </div>
   </header>
 
   <main>
+
+    <!-- ========== CAROUSEL BOOTSTRAP ========== -->
+    <section class="carousel-section">
+      <div id="carouselLasanhas" class="carousel slide" data-bs-ride="carousel">
+        
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselLasanhas" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselLasanhas" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselLasanhas" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselLasanhas" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+          
+          <div class="carousel-item active">
+            <img src="src/lasanhaCard.png" class="d-block w-100" alt="Lasanha Bolonhesa">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Lasanha Bolonhesa</h5>
+              <p>Carne moída temperada com molho caseiro especial</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="src/lasanhaCard.png" class="d-block w-100" alt="Lasanha 4 Queijos">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Lasanha 4 Queijos</h5>
+              <p>Mussarela, provolone, parmesão e catupiry</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="src/lasanhaCard.png" class="d-block w-100" alt="Lasanha Carne com Bacon">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Lasanha Carne com Bacon</h5>
+              <p>Carne desfiada com bacon defumado crocante</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="src/lasanhaCard.png" class="d-block w-100" alt="Lasanha de Camarão">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Lasanha de Camarão</h5>
+              <p>Camarões frescos com requeijão cremoso</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Controles Anterior/Próximo -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselLasanhas" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselLasanhas" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+
+      </div>
+    </section>
+    <!-- ========== FIM DO CAROUSEL ========== -->
+
     <section class="aboutUs">
       <h2>Sobre nós</h2>
-      <p>Nós da <span>Lasanhas do Zé</span> levamos até você a perfeição das nossas lasanhas caseiras.
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta alias amet consectetur totam dolore dolores
-        aliquam minus hic vel saepe ipsum corrupti ipsam quod, adipisci similique culpa beatae laborum repellendus?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla reiciendis consequuntur enim vel necessitatibus
-        facere eos voluptates consectetur? Unde illo id adipisci perspiciatis nisi alias est quae, delectus similique
-        doloribus?</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate est iste tempora accusamus neque delectus
-        vitae, ex, odio alias, fuga totam explicabo laboriosam. Aliquam, libero explicabo dolores molestiae totam rem.
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ut, neque dolores magni quaerat dolor in nisi,
-        provident at corrupti modi, voluptatem fugiat ex recusandae repellat. Repellendus, aliquam harum. Adipisci.</p>
+
+      <p>Nós da <span>Lasanhas do Zé</span> levamos até você o verdadeiro sabor das melhores lasanhas da região! Somos uma empresa familiar que nasceu da paixão pela culinária italiana e do desejo de compartilhar receitas especiais que passam de geração em geração.</p>
+
+      <p>Cada lasanha é preparada artesanalmente com ingredientes selecionados e muito carinho. Nossa massa é feita diariamente, nossos molhos são preparados com tomates frescos e temperos naturais, e todos os recheios são cuidadosamente escolhidos para garantir qualidade e sabor incomparáveis. Acreditamos que uma boa refeição vai muito além do alimento - ela cria memórias, aproxima pessoas e torna os momentos especiais ainda mais saborosos.</p>
+
+      <p>Atendemos toda a região com entrega rápida e embalagens que mantêm sua lasanha quentinha e deliciosa. Seja para um almoço em família, um jantar especial ou aquela refeição prática no dia a dia, as Lasanhas do Zé são a escolha perfeita. Faça seu pedido e descubra por que somos a lasanheria favorita da cidade!</p>
     </section>
 
     <section class="avaliacoes">
       <h2>O que dizem nossos clientes</h2>
       <div class="comentarios">
-        <blockquote>"A melhor lasanha que já comi! 🔥"<br><cite>— Amanda, Gravataí</cite></blockquote>
-        <blockquote>"Entrega rápida e comida deliciosa. Recomendo demais."<br><cite>— Felipe, Canoas</cite></blockquote>
-        <blockquote>"A lasanha 4 queijos é um espetáculo. Virei cliente fiel!"<br><cite>— Juliana, Cachoeirinha</cite></blockquote>
+        <blockquote>"A melhor lasanha que já comi! Massa perfeita e recheio generoso. Virou tradição aqui em casa!"<br><cite>— Amanda Silva</cite></blockquote>
+        <blockquote>"Entrega rápida e comida deliciosa! A lasanha chegou quentinha e o sabor é incrível. Super recomendo!"<br><cite>— Felipe Costa</cite></blockquote>
+        <blockquote>"A 4 queijos é perfeita! Cremosa na medida certa, com aquele gratinado irresistível. Nota 10!"<br><cite>— Juliana Santos</cite></blockquote>
       </div>
     </section>
   </main>
 
-  <script>
-    const car = JSON.parse(localStorage.getItem("carrinho")) || [];
-    const badge = document.getElementById("badgeQtd");
-    if (badge) {
-      const totalItens = car.reduce((acc, item) => acc + item.quantidade, 0);
-      badge.textContent = `(${totalItens})`;
-    }
-  </script>
+  <script src="js/badgeUpdate.js"></script>
 
 </body>
-
 </html>
